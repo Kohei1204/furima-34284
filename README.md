@@ -19,6 +19,7 @@
 | Column                              | Type       | Options           |
 |-------------------------------------|------------|-------------------|
 | title                               | string     | null: false       |
+| image                               | text       | null: false       |
 | detail                              | text       | null: false       |
 | user                                | references | foreign_key: true |
 
