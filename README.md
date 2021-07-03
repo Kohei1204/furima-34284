@@ -7,15 +7,16 @@
 | nickname           | string              | null: false             |
 | email              | string              | null: false ,unique: true |
 | encrypted_password | string              | null: false             |
-| name               | string              | null: false             |
-| kananame           | string              | null: false             |
-| birth              | string              | null: false             |
+| firstname          | string              | null: false             |
+| lastname           | string              | null: false             |
+| fkananame          | string              | null: false             |
+| lkananame          | string              | null: false             |
+| birth              | date                | null: false             |
 
 
 ### Association
-
-* has_many :post
-* has_many :buying
+* has_many :posts
+* has_many :buyings
 
 ## posts table
 
@@ -28,7 +29,7 @@
 | burden_id                           | integer    | null: false       |
 | area_id                             | integer    | null: false       |
 | days_id                             | integer    | null: false       |
-| price                               | text       | null: false       |
+| price                               | integer    | null: false       |
 | user                                | references | foreign_key: true |
 
 ### Association
@@ -47,13 +48,14 @@ has_one :buying
 | phonenum                            | string     | null: false       |
 | user                                | references | foreign_key: true |
 
-* has_one :buying
+* belongs_to :buying
 
 ## buyings table
 | Column                              | Type       | Options           |
 |-------------------------------------|------------|-------------------|
-| product                             | string     | null: false       |
+| title                               | references | foreign_key: true |
 | user                                | references | foreign_key: true |
 
+belongs_to :user
 has_one :add
 belongs_to :post
