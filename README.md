@@ -14,8 +14,8 @@
 
 ### Association
 
-* has_many :posts
-* has_many :buyings
+* has_many :post
+* has_many :buying
 
 ## posts table
 
@@ -32,20 +32,22 @@
 | user                                | references | foreign_key: true |
 
 ### Association
-- belongs_to :buyings
+belongs_to :user
+has_one :buying
 
 ## adds table
 
 | Column                              | Type       | Options           |
 |-------------------------------------|------------|-------------------|
 | zip                                 | string     | null: false       |
-| city                                | string     | null: false       |
-| muni_id                             | integer    | null: false       |
+| area_id                             | integer    | null: false       |
+| muni                                | string     | null: false       |
 | block                               | string     | null: false       |
-| building                            | string     | null: false       |
+| building                            | string     |                   |
 | phonenum                            | string     | null: false       |
+| user                                | references | foreign_key: true |
 
-* has_many :buyings
+* has_one :buying
 
 ## buyings table
 | Column                              | Type       | Options           |
@@ -53,4 +55,5 @@
 | product                             | string     | null: false       |
 | user                                | references | foreign_key: true |
 
-- belongs_to :adds
+has_one :add
+belongs_to :post
