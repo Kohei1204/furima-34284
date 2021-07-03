@@ -46,15 +46,15 @@ has_one :buying
 | block                               | string     | null: false       |
 | building                            | string     |                   |
 | phonenum                            | string     | null: false       |
-| user                                | references | foreign_key: true |
+| user_id                             | references | foreign_key: true |
 
 * belongs_to :buying
 
 ## buyings table
 | Column                              | Type       | Options           |
 |-------------------------------------|------------|-------------------|
-| title                               | references | foreign_key: true |
-| user                                | references | foreign_key: true |
+| post_id                             | references | foreign_key: true |
+| user_id                             | references | foreign_key: true |
 
 belongs_to :user
 has_one :add
