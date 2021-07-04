@@ -46,7 +46,7 @@ has_one :buy
 | block                               | string     | null: false       |
 | building                            | string     |                   |
 | phonenum                            | string     | null: false       |
-| buying                              | references | foreign_key: true |
+| buy                                 | references | foreign_key: true |
 
 * belongs_to :buy
 
