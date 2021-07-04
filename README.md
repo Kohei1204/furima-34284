@@ -4,52 +4,58 @@
 
 | Column             | Type                | Options                 |
 |--------------------|---------------------|-------------------------|
-| email              | string              | null: false             |
-| password           | string              | null: false             |
-| name               | string              | null: false             |
-| profile            | text                | null: false             |
+| nickname           | string              | null: false             |
+| email              | string              | null: false ,unique: true |
+| encrypted_password | string              | null: false             |
+| firstname          | string              | null: false             |
+| lastname           | string              | null: false             |
+| fkananame          | string              | null: false             |
+| lkananame          | string              | null: false             |
+| birth              | date                | null: false             |
+
 
 ### Association
-
 * has_many :posts
-* has_many :buyings
+* has_many :buys
 
 ## posts table
 
 | Column                              | Type       | Options           |
 |-------------------------------------|------------|-------------------|
 | title                               | string     | null: false       |
-| image                               | text       | null: false       |
 | detail                              | text       | null: false       |
-| category                            | text       | null: false       |
-| condition                           | text       | null: false       |
-| burden                              | text       | null: false       |
-| area                                | text       | null: false       |
-| days                                | text       | null: false       |
+| category_id                         | integer    | null: false       |
+| condition_id                        | integer    | null: false       |
+| burden_id                           | integer    | null: false       |
+| area_id                             | integer    | null: false       |
+| day_id                              | integer    | null: false       |
+| price                               | integer    | null: false       |
 | user                                | references | foreign_key: true |
 
 ### Association
-
-- belongs_to :user
+belongs_to :user
+has_one :buy
 
 ## adds table
 
 | Column                              | Type       | Options           |
 |-------------------------------------|------------|-------------------|
-| cardnum                             | string     | null: false       |
-| cardpass                            | string     | null: false       |
-| adress                              | string     | null: false       |
-| expiration                          | string     | null: false       |
-| user                                | references | foreign_key: true |
+| zip                                 | string     | null: false       |
+| area_id                             | integer    | null: false       |
+| muni                                | string     | null: false       |
+| block                               | string     | null: false       |
+| building                            | string     |                   |
+| phonenum                            | string     | null: false       |
+| buy                                 | references | foreign_key: true |
 
-- belongs_to :user
+* belongs_to :buy
 
-## buyings table
+## buys table
 | Column                              | Type       | Options           |
 |-------------------------------------|------------|-------------------|
-| cardnum                             | string     | null: false       |
+| post                                | references | foreign_key: true |
 | user                                | references | foreign_key: true |
 
-has_many :user
-has_many :posts
-has_many :adds
+belongs_to :user
+has_one :add
+belongs_to :post
