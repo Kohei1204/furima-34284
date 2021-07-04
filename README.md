@@ -16,7 +16,7 @@
 
 ### Association
 * has_many :posts
-* has_many :buyings
+* has_many :buys
 
 ## posts table
 
@@ -28,13 +28,13 @@
 | condition_id                        | integer    | null: false       |
 | burden_id                           | integer    | null: false       |
 | area_id                             | integer    | null: false       |
-| days_id                             | integer    | null: false       |
+| day_id                              | integer    | null: false       |
 | price                               | integer    | null: false       |
 | user                                | references | foreign_key: true |
 
 ### Association
 belongs_to :user
-has_one :buying
+has_one :buy
 
 ## adds table
 
@@ -48,9 +48,9 @@ has_one :buying
 | phonenum                            | string     | null: false       |
 | buying                              | references | foreign_key: true |
 
-* belongs_to :buying
+* belongs_to :buy
 
-## buyings table
+## buys table
 | Column                              | Type       | Options           |
 |-------------------------------------|------------|-------------------|
 | post                                | references | foreign_key: true |
