@@ -1,10 +1,10 @@
 class ItemsController < ApplicationController
   def index
-    @items = Item.includes(:user)
+    # @items = Item.includes(:user)
   end
 
-  def new
-    @item = Item.new
-  end
+  # def new
+  #   @item = Item.new
+  # end
 
 end
