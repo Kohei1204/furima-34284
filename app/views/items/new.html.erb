@@ -9,7 +9,7 @@
     <%= form_with model: @item, url: items_path, local: true do |f| %>
 
     <%# インスタンスを渡して、エラー発生時にメッセージが表示されるようにしましょう。%>
-    <%# render 'shared/error_messages', model: f.object %>
+    <%render 'shared/error_messages', model: f.object %>
     <%# //インスタンスを渡して、エラー発生時にメッセージが表示されるようにしましょう。%>
 
     <%# 商品画像 %>
@@ -105,7 +105,20 @@
             <div class="price-content">
               <span>販売手数料 (10%)</span>
               <span>
-                <span id='add-tax-price'></span>円
+                <span id='add-tax-price'>
+                  <script>
+                    function count (){
+                      const articleText  = document.getElementById("article_text");
+                      articleText.addEventListener("keyup", () => {
+                        console.log(articleText.value.length);
+                      });
+                    };
+
+                    all = form("item-price")
+
+                    document.write(all)
+                  </script>
+                </span>円
               </span>
             </div>
             <div class="price-content">
