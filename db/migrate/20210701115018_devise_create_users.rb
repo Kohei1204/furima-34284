@@ -13,7 +13,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.0]
       t.string :lkananame,          null: false
       t.date   :birth ,             null: false
 
-      
+
 
 
 
