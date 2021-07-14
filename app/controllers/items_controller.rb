@@ -5,8 +5,8 @@ class ItemsController < ApplicationController
 
 
   def index
-    # @items = Item.includes(:user)
-    @items = Item.all
+    @items = Item.includes(:user)
+    # @items = Item.all
     @items = Item.order("created_at DESC")
   end
 
@@ -24,21 +24,21 @@ class ItemsController < ApplicationController
     end
   end
 
-  def show
-    @comment = Comment.new
-    @comments = @item.comments
-  end
+  # def show
+  #   @comment = Comment.new
+  #   @comments = @item.comments
+  # end
 
-  def edit
-  end
+  # def edit
+  # end
 
-  def update
-    if @item.update(item_params)
-      redirect_to item_path(@item)
-    else
-      render :edit
-    end
-  end
+  # def update
+  #   if @item.update(item_params)
+  #     redirect_to item_path(@item)
+  #   else
+  #     render :edit
+  #   end
+  # end
 
   # def destroy
   #   if @item.destroy
@@ -54,7 +54,7 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:title, :image, :price).merge(user_id: current_user.id)
+    params.require(:item).permit(:image,:title, :detail, :category_id, :condition_id, :burden_id, :area_id, :day_id, :price).merge(user_id: current_user.id)
   end
 
   def set_item
