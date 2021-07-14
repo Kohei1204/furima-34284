@@ -15,10 +15,10 @@
 
 
 ### Association
-* has_many :posts
+* has_many :items
 * has_many :buys
 
-## posts table
+## items table
 
 | Column                              | Type       | Options           |
 |-------------------------------------|------------|-------------------|
@@ -58,4 +58,4 @@ has_one :buy
 
 belongs_to :user
 has_one :add
-belongs_to :post
+belongs_to :item
