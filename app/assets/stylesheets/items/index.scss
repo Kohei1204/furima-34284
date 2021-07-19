@@ -219,6 +219,7 @@ a {
   background-color: #FFF;
   display: flex;
   flex-direction: column;
+  // flex-wrap: wrap;
   align-items: center;
   padding: 10vh 0;
 }
@@ -240,6 +241,8 @@ a {
 .item-lists {
   width: 100vw;
   display: flex;
+  // flex-direction: row;
+  // flex-flow: row wrap;
   flex-wrap: wrap;
   justify-content: center;
 }
@@ -248,6 +251,7 @@ a {
   width: 37vh;
   padding: 1vw;
   background-color: #FFF;
+  // flex-direction: row;
 }
 
 
