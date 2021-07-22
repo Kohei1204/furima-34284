@@ -244,7 +244,8 @@ a {
   // flex-direction: row;
   // flex-flow: row wrap;
   flex-wrap: wrap;
-  justify-content: center;
+  // justify-content: center;
+  justify-content: space-around;
 }
 
 .item-lists>.list {
