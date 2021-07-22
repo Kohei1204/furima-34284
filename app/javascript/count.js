@@ -3,3 +3,7 @@
 // };
 
 // window.addEventListener('load', count);
+
+// window.addEventListener('load', () => {
+//   console.log("OK");
+// });
