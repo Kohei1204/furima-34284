@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users
-  # get 'items/index'
+  get 'items/index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root to: 'items#index'
-  resources :items, only: [:new, :create, :show, :edit, :update, :destroy] do
+  # resources :items, only: [:new, :create, :show, :edit, :update, :destroy] do
+  # end
+  resources :items, only: [:new, :create, :show] do
   end
 
   resources :users, only: :show

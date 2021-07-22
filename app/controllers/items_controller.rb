@@ -25,8 +25,8 @@ class ItemsController < ApplicationController
   end
 
   def show
-  #   @comment = Comment.new
-  #   @comments = @item.comments
+    # @comment = Comment.new
+    # @comments = @item.comments
 
   end
 
@@ -58,13 +58,13 @@ class ItemsController < ApplicationController
     params.require(:item).permit(:image, :title, :detail, :category_id, :condition_id, :burden_id, :area_id, :day_id, :price, :image).merge(user_id: current_user.id)
   end
 
-  def set_item
-    @item = Item.find(params[:id])
-  end
+  # def set_item
+  #   @item = Item.find(params[:id])
+  # end
 
-  def contributor_confirmation
-    redirect_to root_path unless current_user == @item.user
-  end
+  # def contributor_confirmation
+  #   redirect_to root_path unless current_user == @item.user
+  # end
 
 
 end
