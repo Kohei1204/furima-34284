@@ -4,3 +4,6 @@
 const channels = require.context('.', true, /_channel\.js$/)
 channels.keys().forEach(channels)
 
+window.addEventListener('load', function(){
+  const pullDownButton = document.getElementById("lists")
+  console.log(pullDownButton) })
