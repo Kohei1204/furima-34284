@@ -5,9 +5,9 @@ class ItemsController < ApplicationController
 
 
   def index
-    @items = Item.includes(:user)
+    @items = Item.includes(:user).order("created_at DESC")
     # @items = Item.all
-    @items = Item.order("created_at DESC")
+    # @area = Area.find_by_id  @item.area_id
   end
 
   def new
@@ -33,23 +33,23 @@ class ItemsController < ApplicationController
   def edit
   end
 
-  # def update
-  #   if @item.update(item_params)
-  #     redirect_to item_path(@item)
-  #   else
-  #     render :edit
-  #   end
-  # end
+  def update
+    if @item.update(item_params)
+      redirect_to item_path(@item)
+    else
+      render :edit
+    end
+    # item = Item.find(params[:id])
+    # item.update(item_params)
+  end
 
-  # def destroy
-  #   if @item.destroy
-  #     redirect_to root_path
-  #   else
-  #     redirect_to root_path
-  #   end
-  # end
-
-
+  def destroy
+    if @item.destroy
+      redirect_to root_path
+    else
+      redirect_to root_path
+    end
+  end
 
 
   private
@@ -58,15 +58,13 @@ class ItemsController < ApplicationController
     params.require(:item).permit(:image, :title, :detail, :category_id, :condition_id, :burden_id, :area_id, :day_id, :price, :image).merge(user_id: current_user.id)
   end
 
-  # def set_item
-  #   @item = Item.find(params[:id])
-  # end
+  def set_item
+    @item = Item.find(params[:id])
+  end
 
-  # def contributor_confirmation
-  #   redirect_to root_path unless current_user == @item.user
-  # end
-
-
+  def contributor_confirmation
+    redirect_to root_path unless current_user == @item.user
+  end
 end
 
 
