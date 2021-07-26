@@ -27,13 +27,15 @@ class ItemsController < ApplicationController
   def show
     # @comment = Comment.new
     # @comments = @item.comments
-
   end
 
   def edit
+    # @item = Item.find(params[:id])
+    # @images = @item.images
   end
 
   def update
+    # @item = Item.find(params[:id])
     if @item.update(item_params)
       redirect_to item_path(@item)
     else
@@ -44,6 +46,7 @@ class ItemsController < ApplicationController
   end
 
   def destroy
+    # @item = Item.find(params[:id])
     if @item.destroy
       redirect_to root_path
     else
@@ -57,6 +60,10 @@ class ItemsController < ApplicationController
   def item_params
     params.require(:item).permit(:image, :title, :detail, :category_id, :condition_id, :burden_id, :area_id, :day_id, :price, :image).merge(user_id: current_user.id)
   end
+
+  # def update_params
+  #   params.require(:item).permit( :name, :description, :category_id, :size_id, :brand_id, :prefecture_id, :condition_id, :delivery_charge_id, :delivery_way_id, :delivery_days_id, :price,images_attributes: [:image_url, :id]
+  # end
 
   def set_item
     @item = Item.find(params[:id])
