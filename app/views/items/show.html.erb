@@ -9,9 +9,9 @@
     <div class="item-img-content">
       <%= image_tag @item.image ,class:"item-box-img" %>
       <%# 商品が売れている場合は、sold outを表示しましょう %>
-      <div class="sold-out">
+      <%# <div class="sold-out">
         <span>Sold Out!!</span>
-      </div>
+      </div> %>
       <%# //商品が売れている場合は、sold outを表示しましょう %>
     </div>
     <div class="item-price-box">
@@ -82,18 +82,26 @@
   <%# /商品の概要 %>
 
   <div class="comment-box">
-    <form>
-      <textarea class="comment-text"></textarea>
-      <p class="comment-warn">
-        相手のことを考え丁寧なコメントを心がけましょう。
-        <br>
-        不快な言葉遣いなどは利用制限や退会処分となることがあります。
-      </p>
-      <button type="submit" class="comment-btn">
-        <%= image_tag "comment.png" ,class:"comment-flag-icon" ,width:"20",height:"25"%>
-        <span>コメントする<span>
-      </button>
-    </form>
+    <% if user_signed_in? %>
+          <%= form_with model: [@item, @comment],local: true do |f| %>
+            <div class="field">
+              <%# <textarea class="comment-text"></textarea> %>
+              <%= f.text_field :text, class:"comment-text" %>
+            </div>
+            <button type="submit" class="comment-btn">
+              <%= image_tag "comment.png" ,class:"comment-flag-icon" ,width:"20",height:"25"%>
+              <span>コメントする<span>
+            </button>
+          <% end %>
+        <ul class="comments_lists">
+          <% @comments.each do |comment|%>
+                <li class="comments_list">
+                  <%= comment.text %>
+                  <%= link_to "（ #{comment.user.name}）", user_path(comment.user), class: :comment_user %>
+                </li>
+          <% end %>
+        </ul>
+    <% end %>
   </div>
   <div class="links">
     <a href="#" class="change-item-btn">
