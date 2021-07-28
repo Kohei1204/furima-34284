@@ -7,6 +7,8 @@ class Item < ApplicationRecord
   belongs_to :day
   belongs_to :area
   belongs_to :condition
+  has_many :comments
+  # , dependent: :destroy
 
 
 
