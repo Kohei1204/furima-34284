@@ -10,9 +10,9 @@ class CommentsController < ApplicationController
       ActionCable.server.broadcast 'comment_channel', content: @comment
       redirect_to item_path(@comment.item)
     else
-      # @item = @comment.item
-      # @comments = @item.comments
-      # render "items/show"
+      @item = @comment.item
+      @comments = @item.comments
+      render "items/show"
     end
     # Comment.create(comment.params)
     # redirect_to "/items/#{comment.item.id}"
