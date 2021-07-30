@@ -5,8 +5,8 @@ class ItemsController < ApplicationController
 
 
   def index
-    @items = Item.includes(:user).order("created_at DESC")
-    # @items = Item.all
+    # @items = Item.includes(:user).order("created_at DESC")
+    @items = Item.all
     # @area = Area.find_by_id  @item.area_id
   end
 
@@ -14,39 +14,39 @@ class ItemsController < ApplicationController
     @item = Item.new
   end
 
-  def create
-    # Item.create(item_params)
-    @item = Item.new(item_params)
-    if @item.save
-      redirect_to root_path
-    else
-      render :new
-    end
-  end
+  # def create
+  #   # Item.create(item_params)
+  #   @item = Item.new(item_params)
+  #   if @item.save
+  #     redirect_to root_path
+  #   else
+  #     render :new
+  #   end
+  # end
 
-  def show
-    @comment = Comment.new
-    @comments = @item.comments
-  end
+  # def show
+  #   @comment = Comment.new
+  #   @comments = @item.comments
+  # end
 
-  def edit
-  end
+  # def edit
+  # end
 
-  def update
-    if @item.update(item_params)
-      redirect_to item_path(@item)
-    else
-      render :edit
-    end
-  end
+  # def update
+  #   if @item.update(item_params)
+  #     redirect_to item_path(@item)
+  #   else
+  #     render :edit
+  #   end
+  # end
 
-  def destroy
-    if @item.destroy
-      redirect_to root_path
-    else
-      redirect_to root_path
-    end
-  end
+  # def destroy
+  #   if @item.destroy
+  #     redirect_to root_path
+  #   else
+  #     redirect_to root_path
+  #   end
+  # end
 
 
   private
