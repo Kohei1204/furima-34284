@@ -23,8 +23,10 @@ class Item < ApplicationRecord
   validates :area_id, numericality: { other_than: 1 , message: "can't be blank"}
   validates :condition_id, numericality: { other_than: 1 , message: "can't be blank"}
 
-  def self.search(search) if search != ""
-    Item.where('text LIKE(?)', "%#{search}%") else
-    Item.all end
+  def self.search(search)
+    if search != ""
+      Item.where('text LIKE(?)', "%#{search}%")
+    else
+      Item.all end
   end
 end

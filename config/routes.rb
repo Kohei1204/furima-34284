@@ -3,7 +3,8 @@ Rails.application.routes.draw do
   # get 'items/index'
   root to: 'items#index'
   # item "items/:id/update" => "posts#update"
-  resources :items, only: [:new, :create, :show, :edit, :update, :destroy] do
+  resources :items do
+  # , only: [:new, :create, :show, :edit, :update, :destroy] do
     resources :comments, only: :create
     collection do
       get 'search'
