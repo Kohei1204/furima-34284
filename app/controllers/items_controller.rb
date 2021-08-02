@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
   before_action :set_item, except: [:index, :new, :create]
   before_action :authenticate_user!, except: [:index, :show]
   before_action :contributor_confirmation, only: [:edit, :update, :destroy]
+  before_action :move_to_index, except: [:index, :show, :search]
 
 
   def index
@@ -26,7 +27,7 @@ class ItemsController < ApplicationController
 
   def show
     @comment = Comment.new
-    @comments = @item.comments
+    @comments = @item.comments.includes(:user)
   end
 
   def edit
@@ -38,6 +39,8 @@ class ItemsController < ApplicationController
     else
       render :edit
     end
+    # item = Item.find(params[:id])
+    # item.update(item_params)
   end
 
   def destroy
@@ -67,6 +70,12 @@ class ItemsController < ApplicationController
 
   def contributor_confirmation
     redirect_to root_path unless current_user == @item.user
+  end
+
+  def move_to_index
+    unless user_signed_in?
+      redirect_to action: :index
+    end
   end
 end
 
