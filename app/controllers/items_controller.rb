@@ -52,7 +52,7 @@ class ItemsController < ApplicationController
   end
 
   def search
-    @items = Item.search(params[:keyword])
+    @items = Item.search(params[:search])
   end
 
 
@@ -64,8 +64,7 @@ class ItemsController < ApplicationController
 
 
   def set_item
-    # @item = Item.find(params[:id])
-    @item = Item.find(params[:item_id])
+    @item = Item.find(params[:search_id])
   end
 
   def contributor_confirmation
